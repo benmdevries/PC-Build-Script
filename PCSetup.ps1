@@ -624,7 +624,7 @@ function Power {
 }
 
 function JoinDomain {
-    add-computer –domainname spcs.local -OUPath "OU=SPCS Computer Lab,DC=spcs,DC=local" -Credential SPCS\Administrator
+    add-computer –domainname "spcs.local" -OUPath "OU=SPCS Computer Lab,DC=spcs,DC=local" -Credential SPCS\Administrator
 }
 
 function RestartPC{
