@@ -129,12 +129,12 @@ function ReclaimWindows10 {
     # Remove-ItemProperty -Path "HKCU:\Software\Microsoft\InputPersonalization\TrainedDataStore" -Name "HarvestContacts"
 
     # Restrict Windows Update P2P only to local network
-    Write-Host "Restricting Windows Update P2P only to local network..."
-    Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" -Name "DODownloadMode" -Type DWord -Value 1
-    If (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization")) {
-        New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization" | Out-Null
-    }
-    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization" -Name "SystemSettingsDownloadMode" -Type DWord -Value 3
+    # Write-Host "Restricting Windows Update P2P only to local network..."
+    # Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" -Name "DODownloadMode" -Type DWord -Value 1
+    # If (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization")) {
+    #     New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization" | Out-Null
+    # }
+    # Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization" -Name "SystemSettingsDownloadMode" -Type DWord -Value 3
 
     # Unrestrict Windows Update P2P
     # Remove-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" -Name "DODownloadMode"
@@ -511,7 +511,6 @@ function ReclaimWindows10 {
     Get-AppxPackage -allusers "AD2F1837.HPJumpStarts" | Remove-AppxPackage
     Get-AppxPackage -allusers "AD2F1837.HPPrinterControl" | Remove-AppxPackage
     Get-AppxPackage -allusers "AD2F1837.HPPCHardwareDiagnosticsWindows" | Remove-AppxPackage
-    Get-AppxPackage -allusers "Microsoft.XboxGameCallableUI" | Remove-AppxPackage
     Get-AppxPackage -allusers "PricelinePartnerNetwork.Booking.comUSABigsavingson" | Remove-AppxPackage
     Get-AppxPackage -allusers "Microsoft.WindowsFeedbackHub" | Remove-AppxPackage
     Get-AppxPackage -allusers "Microsoft.Microsoft3DViewer" | Remove-AppxPackage
