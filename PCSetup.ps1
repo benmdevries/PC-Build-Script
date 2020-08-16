@@ -627,6 +627,10 @@ function JoinDomain {
     add-computer -domainname "spcs.local" -OUPath "OU=SPCS Computer Lab,DC=spcs,DC=local" -Credential SPCS\Administrator 
 }
 
+function SetTime {
+    Set-TimeZone -Id "Eastern Standard Time" 
+}
+
 function RestartPC{
     ##########
     # Restart
@@ -644,6 +648,6 @@ ReclaimWindows10
 LayoutDesign
 ApplyDefaultApps
 Power
-#SetPCName
+SetTime
 JoinDomain
 RestartPC
