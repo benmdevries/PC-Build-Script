@@ -12,7 +12,7 @@
               <start:Group Name="Office 365" xmlns:start="http://schemas.microsoft.com/Start/2014/StartLayout">
                   <start:Tile Size="2x2" Column="0" Row="2" AppUserModelID="Microsoft.Office.Desktop_8wekyb3d8bbwe!Excel" />
                   <start:Tile Size="2x2" Column="2" Row="0" AppUserModelID="Microsoft.Office.Desktop_8wekyb3d8bbwe!Word" />
-                  <start:Tile Size="2x2" Column="0" Row="0" AppUserModelID="Microsoft.Office.Desktop_8wekyb3d8bbwe!Outlook" />
+                  <start:Tile Size="2x2" Column="0" Row="0" AppUserModelID="Microsoft.Office.Desktop_8wekyb3d8bbwe!PowerPoint" />
               </start:Group>
           </defaultlayout:StartLayout>
       </StartLayoutCollection>
