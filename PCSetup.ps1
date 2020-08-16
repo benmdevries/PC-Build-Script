@@ -666,5 +666,5 @@ LayoutDesign
 ApplyDefaultApps
 Power
 SetTime
-JoinDomain
+#JoinDomain
 RestartPC
