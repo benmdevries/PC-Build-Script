@@ -623,6 +623,10 @@ function Power {
     POWERCFG -CHANGE -hibernate-timeout-dc 0
 }
 
+function JoinDomain {
+    add-computer –domainname spcs.local -OUPath "OU=SPCS Computer Lab,DC=spcs,DC=local" -Credential SPCS\Administrator
+}
+
 function RestartPC{
     ##########
     # Restart
@@ -641,4 +645,5 @@ LayoutDesign
 ApplyDefaultApps
 Power
 #SetPCName
+JoinDomain
 RestartPC
