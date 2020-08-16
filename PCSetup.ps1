@@ -515,6 +515,11 @@ function ReclaimWindows10 {
     Get-AppxPackage -allusers "Microsoft.WindowsFeedbackHub" | Remove-AppxPackage
     Get-AppxPackage -allusers "Microsoft.Microsoft3DViewer" | Remove-AppxPackage
     Get-AppxPackage -allusers "Microsoft.MSPaint" | Remove-AppxPackage
+    Get-AppxPackage -allusers "AD2F1837.HPSupportAssistant" | Remove-AppxPackage
+    Get-AppxPackage -allusers "AD2F1837.HPPrivacySettings" | Remove-AppxPackage
+    Get-AppxPackage -allusers "AD2F1837.HPSystemEventUtility" | Remove-AppxPackage
+    Get-AppxPackage -allusers "Microsoft.MixedReality.Portal" | Remove-AppxPackage
+    Get-AppxPackage -allusers "Microsoft.OneConnect" | Remove-AppxPackage
 
     # Install default Microsoft applications
     # Add-AppxPackage -DisableDevelopmentMode -Register "$($(Get-AppXPackage -AllUsers "Microsoft.3DBuilder").InstallLocation)\AppXManifest.xml"
