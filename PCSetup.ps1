@@ -503,6 +503,18 @@ function ReclaimWindows10 {
     Get-AppxPackage "king.com.CandyCrushSodaSaga" | Remove-AppxPackage
     Get-AppxPackage "king.com.CandyCrushSaga" | Remove-AppxPackage
     Get-AppxPackage "king.com.CandyCrushFriends" | Remove-AppxPackage
+    Get-AppxPackage "Amazon.com.Amazon" | Remove-AppxPackage
+    Get-AppxPackage "4DF9E0F8.Netflix" | Remove-AppxPackage
+    Get-AppxPackage "C27EB4BA.DropboxOEM" | Remove-AppxPackage
+    Get-AppxPackage "5A894077.McAfeeSecurity" | Remove-AppxPackage
+    Get-AppxPackage "AD2F1837.HPJumpStarts" | Remove-AppxPackage
+    Get-AppxPackage "AD2F1837.HPPrinterControl" | Remove-AppxPackage
+    Get-AppxPackage "AD2F1837.HPPCHardwareDiagnosticsWindows" | Remove-AppxPackage
+    Get-AppxPackage "Microsoft.XboxGameCallableUI" | Remove-AppxPackage
+    Get-AppxPackage "PricelinePartnerNetwork.Booking.comUSABigsavingson" | Remove-AppxPackage
+    Get-AppxPackage "Microsoft.WindowsFeedbackHub" | Remove-AppxPackage
+    Get-AppxPackage "Microsoft.Microsoft3DViewer" | Remove-AppxPackage
+    Get-AppxPackage "Microsoft.MSPaint" | Remove-AppxPackage
 
     # Install default Microsoft applications
     # Add-AppxPackage -DisableDevelopmentMode -Register "$($(Get-AppXPackage -AllUsers "Microsoft.3DBuilder").InstallLocation)\AppXManifest.xml"
@@ -543,7 +555,7 @@ function ReclaimWindows10 {
     # dism /online /Disable-Feature /FeatureName:MediaPlayback /Quiet /NoRestart
 
     # Install Windows Media Player
-    # dism /online /Enable-Feature /FeatureName:MediaPlayback /Quiet /NoRestart
+    dism /online /Enable-Feature /FeatureName:MediaPlayback /Quiet /NoRestart
 
     # Uninstall Work Folders Client
     # Write-Host "Uninstalling Work Folders Client..."
