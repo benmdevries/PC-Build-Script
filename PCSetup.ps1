@@ -62,9 +62,9 @@ function ReclaimWindows10 {
     # Set-ItemProperty -Path "HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots" -Name "Value" -Type DWord -Value 1
 
     # Disable SmartScreen Filter
-    # Write-Host "Disabling SmartScreen Filter..."
-    # Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer" -Name "SmartScreenEnabled" -Type String -Value "Off"
-    # Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\AppHost" -Name "EnableWebContentEvaluation" -Type DWord -Value 0
+    Write-Host "Disabling SmartScreen Filter..."
+    Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer" -Name "SmartScreenEnabled" -Type String -Value "Off"
+    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\AppHost" -Name "EnableWebContentEvaluation" -Type DWord -Value 0
 
     # Enable SmartScreen Filter
     # Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer" -Name "SmartScreenEnabled" -Type String -Value "RequireAdmin"
@@ -431,38 +431,38 @@ function ReclaimWindows10 {
     ##########
 
     # Disable OneDrive
-    # Write-Host "Disabling OneDrive..."
-    # If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\OneDrive")) {
-    #     New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\OneDrive" | Out-Null
-    # }
-    # Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\OneDrive" -Name "DisableFileSyncNGSC" -Type DWord -Value 1
+    Write-Host "Disabling OneDrive..."
+    If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\OneDrive")) {
+        New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\OneDrive" | Out-Null
+    }
+    Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\OneDrive" -Name "DisableFileSyncNGSC" -Type DWord -Value 1
 
     # Enable OneDrive
     # Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\OneDrive" -Name "DisableFileSyncNGSC"
 
     # Uninstall OneDrive
-    # Write-Host "Uninstalling OneDrive..."
-    # Stop-Process -Name OneDrive -ErrorAction SilentlyContinue
-    # Start-Sleep -s 3
-    # $onedrive = "$env:SYSTEMROOT\SysWOW64\OneDriveSetup.exe"
-    # If (!(Test-Path $onedrive)) {
-    #     $onedrive = "$env:SYSTEMROOT\System32\OneDriveSetup.exe"
-    # }
-    # Start-Process $onedrive "/uninstall" -NoNewWindow -Wait
-    # Start-Sleep -s 3
-    # Stop-Process -Name explorer -ErrorAction SilentlyContinue
-    # Start-Sleep -s 3
-    # Remove-Item "$env:USERPROFILE\OneDrive" -Force -Recurse -ErrorAction SilentlyContinue
-    # Remove-Item "$env:LOCALAPPDATA\Microsoft\OneDrive" -Force -Recurse -ErrorAction SilentlyContinue
-    # Remove-Item "$env:PROGRAMDATA\Microsoft OneDrive" -Force -Recurse -ErrorAction SilentlyContinue
-    # If (Test-Path "$env:SYSTEMDRIVE\OneDriveTemp") {
-    #     Remove-Item "$env:SYSTEMDRIVE\OneDriveTemp" -Force -Recurse -ErrorAction SilentlyContinue
-    # }
-    # If (!(Test-Path "HKCR:")) {
-    #     New-PSDrive -Name HKCR -PSProvider Registry -Root HKEY_CLASSES_ROOT | Out-Null
-    # }
-    # Remove-Item -Path "HKCR:\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" -Recurse -ErrorAction SilentlyContinue
-    # Remove-Item -Path "HKCR:\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" -Recurse -ErrorAction SilentlyContinue
+    Write-Host "Uninstalling OneDrive..."
+    Stop-Process -Name OneDrive -ErrorAction SilentlyContinue
+    Start-Sleep -s 3
+    $onedrive = "$env:SYSTEMROOT\SysWOW64\OneDriveSetup.exe"
+    If (!(Test-Path $onedrive)) {
+        $onedrive = "$env:SYSTEMROOT\System32\OneDriveSetup.exe"
+    }
+    Start-Process $onedrive "/uninstall" -NoNewWindow -Wait
+    Start-Sleep -s 3
+    Stop-Process -Name explorer -ErrorAction SilentlyContinue
+    Start-Sleep -s 3
+    Remove-Item "$env:USERPROFILE\OneDrive" -Force -Recurse -ErrorAction SilentlyContinue
+    Remove-Item "$env:LOCALAPPDATA\Microsoft\OneDrive" -Force -Recurse -ErrorAction SilentlyContinue
+    Remove-Item "$env:PROGRAMDATA\Microsoft OneDrive" -Force -Recurse -ErrorAction SilentlyContinue
+    If (Test-Path "$env:SYSTEMDRIVE\OneDriveTemp") {
+        Remove-Item "$env:SYSTEMDRIVE\OneDriveTemp" -Force -Recurse -ErrorAction SilentlyContinue
+    }
+    If (!(Test-Path "HKCR:")) {
+        New-PSDrive -Name HKCR -PSProvider Registry -Root HKEY_CLASSES_ROOT | Out-Null
+    }
+    Remove-Item -Path "HKCR:\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" -Recurse -ErrorAction SilentlyContinue
+    Remove-Item -Path "HKCR:\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" -Recurse -ErrorAction SilentlyContinue
 
     # Install OneDrive
     # $onedrive = "$env:SYSTEMROOT\SysWOW64\OneDriveSetup.exe"
@@ -481,25 +481,25 @@ function ReclaimWindows10 {
     Get-AppxPackage "Microsoft.Getstarted" | Remove-AppxPackage
     Get-AppxPackage "Microsoft.MicrosoftOfficeHub" | Remove-AppxPackage
     Get-AppxPackage "Microsoft.MicrosoftSolitaireCollection" | Remove-AppxPackage
-    # Get-AppxPackage "Microsoft.Office.OneNote" | Remove-AppxPackage
+    Get-AppxPackage "Microsoft.Office.OneNote" | Remove-AppxPackage
     Get-AppxPackage "Microsoft.People" | Remove-AppxPackage
-    # Get-AppxPackage "Microsoft.SkypeApp" | Remove-AppxPackage
+    Get-AppxPackage "Microsoft.SkypeApp" | Remove-AppxPackage
     Get-AppxPackage "Microsoft.Windows.Photos" | Remove-AppxPackage
     Get-AppxPackage "Microsoft.WindowsAlarms" | Remove-AppxPackage
-    # Get-AppxPackage "Microsoft.WindowsCamera" | Remove-AppxPackage
-    # Get-AppxPackage "microsoft.windowscommunicationsapps" | Remove-AppxPackage
+    Get-AppxPackage "Microsoft.WindowsCamera" | Remove-AppxPackage
+    Get-AppxPackage "microsoft.windowscommunicationsapps" | Remove-AppxPackage
     Get-AppxPackage "Microsoft.WindowsMaps" | Remove-AppxPackage
     Get-AppxPackage "Microsoft.WindowsPhone" | Remove-AppxPackage
-    # Get-AppxPackage "Microsoft.WindowsSoundRecorder" | Remove-AppxPackage
+    Get-AppxPackage "Microsoft.WindowsSoundRecorder" | Remove-AppxPackage
     Get-AppxPackage "Microsoft.XboxApp" | Remove-AppxPackage
     Get-AppxPackage "Microsoft.ZuneMusic" | Remove-AppxPackage
     Get-AppxPackage "Microsoft.ZuneVideo" | Remove-AppxPackage
     # Get-AppxPackage "Microsoft.AppConnector" | Remove-AppxPackage
     # Get-AppxPackage "Microsoft.ConnectivityStore" | Remove-AppxPackage
-    # Get-AppxPackage "Microsoft.Office.Sway" | Remove-AppxPackage
-    # Get-AppxPackage "Microsoft.Messaging" | Remove-AppxPackage
-    # Get-AppxPackage "Microsoft.CommsPhone" | Remove-AppxPackage
-    # Get-AppxPackage "9E2F88E3.Twitter" | Remove-AppxPackage
+    Get-AppxPackage "Microsoft.Office.Sway" | Remove-AppxPackage
+    Get-AppxPackage "Microsoft.Messaging" | Remove-AppxPackage
+    Get-AppxPackage "Microsoft.CommsPhone" | Remove-AppxPackage
+    Get-AppxPackage "9E2F88E3.Twitter" | Remove-AppxPackage
     Get-AppxPackage "king.com.CandyCrushSodaSaga" | Remove-AppxPackage
     Get-AppxPackage "king.com.CandyCrushSaga" | Remove-AppxPackage
     Get-AppxPackage "king.com.CandyCrushFriends" | Remove-AppxPackage
@@ -609,9 +609,9 @@ function ApplyDefaultApps {
 }
 
 # Custom power profile used for our customers. Ensures systems do not go to sleep.
-function IntechPower {
+function Power {
     POWERCFG -DUPLICATESCHEME 381b4222-f694-41f0-9685-ff5bb260df2e 381b4222-f694-41f0-9685-ff5bb260aaaa
-    POWERCFG -CHANGENAME 381b4222-f694-41f0-9685-ff5bb260aaaa "Intech Power Management"
+    POWERCFG -CHANGENAME 381b4222-f694-41f0-9685-ff5bb260aaaa "Power Management"
     POWERCFG -SETACTIVE 381b4222-f694-41f0-9685-ff5bb260aaaa
     POWERCFG -Change -monitor-timeout-ac 15
     POWERCFG -CHANGE -monitor-timeout-dc 5
@@ -639,6 +639,6 @@ InstallApps
 ReclaimWindows10
 LayoutDesign
 ApplyDefaultApps
-IntechPower
-SetPCName
+Power
+#SetPCName
 RestartPC
